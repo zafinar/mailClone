@@ -50,6 +50,15 @@ function Modal (props){
 
     }
 
+    function deleteMail(){
+        modalContext.key
+        async () => {
+            const result = await fetch('./folders/inbox.js', { mode: 'no-cors'})
+            .then(response => response.json())
+            .then(data => setFolders(data));
+          }
+    }
+
     function replyTo(){
         modalContext.typeUpdate("write");
         setContent(modalContext.content.from+"\n"+modalContext.content.subject+"\n"+modalContext.content.to+"\n"+modalContext.content.date+"\n"+modalContext.content.body +"\n__________________________________________________")
@@ -70,6 +79,7 @@ function Modal (props){
                         <div className="modal-nav">                 
                             <div onClick={replyTo} className="reply">reply</div>
                             <div className="favorite">favorite</div>
+                            <div onClick={deleteMail} className="delete">delete</div>
                             <div onClick={closeModal} className="close">X</div>
                         </div>
                         

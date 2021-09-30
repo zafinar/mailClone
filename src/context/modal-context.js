@@ -4,9 +4,11 @@ const ModalContext = createContext({
   content: {},
   type: "read",
   active: false,
+  key: null,
   typeUpdate: (type) => {},
   contentUpdate: (content) =>{},
-  activeUpdate: (active) =>{}   
+  activeUpdate: (active) =>{},
+  keyUpdate: (key) => {}   
 });
 
 export function ModalContextProvider(props){
@@ -14,7 +16,7 @@ export function ModalContextProvider(props){
     const [modalContent,setContent] = useState({})
     const [modalType, setType] = useState("read")
     const [modalActive, setActive] = useState(false)
-
+    const [modalKey, setKey] = useState(null)
     
 
     function typeHandler(type){
@@ -29,13 +31,20 @@ export function ModalContextProvider(props){
         setActive(active)
     }
 
+    function keyHandler(key){
+        setKey(key)
+    }
+
     const context = {
+
         content: modalContent,
         type: modalType,
         active: modalActive,
+        key: modalKey,
         typeUpdate: typeHandler,
         contentUpdate: contentHandler, 
-        activeUpdate: activeHandler 
+        activeUpdate: activeHandler,
+        keyUpdate: keyHandler,
     };
 
 

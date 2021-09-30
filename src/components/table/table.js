@@ -19,8 +19,8 @@ function Table (props) {
     return (
         <table>
             <tbody>
-                {emails.map((email) => {
-                    return <TableRow from={email.from} subject={email.subject} messageId={email["message-id"]} />
+                {emails.map((email,i) => {
+                    return <TableRow key={i} from={email.from} subject={email.subject} messageId={email["message-id"]} />
                 })}
             </tbody>
         </table>

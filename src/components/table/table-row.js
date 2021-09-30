@@ -10,8 +10,8 @@ function TableRow (props) {
      
       modalContext.activeUpdate(true);
       modalContext.contentUpdate(message);
-      modalContext.typeUpdate("read")  
-      console.log(modalContext.active)
+      modalContext.typeUpdate("read")
+      modalContext.keyUpdate(props.key)  
     }
      
     const [message, setMessage] = useState({})
@@ -26,7 +26,7 @@ function TableRow (props) {
 
 
     return (
-            <tr onClick={openEmail}>
+            <tr key={props.key} onClick={openEmail}>
                 <td  className="a" >
                 from: {props.from}             
                 </td>
